@@ -1,3 +1,4 @@
+
 package com.permisos.backend.model;
 
 import jakarta.persistence.*;
@@ -16,10 +17,16 @@ public class Solicitud {
     private LocalDateTime fechaCreacion;
 
     @Column(nullable = false)
+    private String tipoPermiso;
+
+    @Column(nullable = false)
     private String direccionPredio;
 
     @Column(nullable = false)
     private String matriculaInmobiliaria;
+
+    @Column(columnDefinition = "TEXT")
+    private String descripcion;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -31,12 +38,26 @@ public class Solicitud {
     @ManyToOne
     private Funcionario funcionario;
 
-    @OneToMany(mappedBy = "solicitud", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(
+        mappedBy = "solicitud",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
     private List<Documento> documentos = new ArrayList<>();
 
     @PrePersist
     void alCrear() {
         this.fechaCreacion = LocalDateTime.now();
+    }
+
+    public void agregarDocumento(Documento documento) {
+        documentos.add(documento);
+        documento.setSolicitud(this);
+    }
+
+    public void eliminarDocumento(Documento documento) {
+        documentos.remove(documento);
+        documento.setSolicitud(null);
     }
 
     public Long getIdRadicado() {
@@ -55,6 +76,14 @@ public class Solicitud {
         this.fechaCreacion = fechaCreacion;
     }
 
+    public String getTipoPermiso() {
+        return tipoPermiso;
+    }
+
+    public void setTipoPermiso(String tipoPermiso) {
+        this.tipoPermiso = tipoPermiso;
+    }
+
     public String getDireccionPredio() {
         return direccionPredio;
     }
@@ -69,6 +98,14 @@ public class Solicitud {
 
     public void setMatriculaInmobiliaria(String matriculaInmobiliaria) {
         this.matriculaInmobiliaria = matriculaInmobiliaria;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public EstadoSolicitud getEstado() {

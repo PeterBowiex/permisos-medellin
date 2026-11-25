@@ -1,4 +1,3 @@
-
 export interface Usuario {
   id: number;
   nombre: string;
@@ -12,6 +11,36 @@ export interface DatosRegistro {
   clave: string;
   telefono: string;
   direccion: string;
+}
+
+export interface DatosSolicitud {
+  tipoPermiso: string;
+  direccionPredio: string;
+  matriculaInmobiliaria: string;
+  descripcion: string;
+  documentos: {
+    tipo: string;
+    archivo: File;
+  }[];
+}
+
+export interface DocumentoResumen {
+  id: number;
+  nombreArchivo: string;
+  tipoDocumento: string;
+  formato: string;
+  tamanioBytes: number;
+}
+
+export interface SolicitudResumen {
+  idRadicado: number;
+  tipoPermiso: string;
+  direccionPredio: string;
+  matriculaInmobiliaria: string;
+  descripcion: string;
+  estado: string;
+  fechaCreacion: string;
+  documentos: DocumentoResumen[];
 }
 
 export function basicAuth(email: string, clave: string): string {
@@ -53,4 +82,55 @@ export async function iniciarSesion(
   }
 
   return { usuario: await res.json(), auth };
+}
+
+export async function crearSolicitud(
+  datos: DatosSolicitud,
+  auth: string
+): Promise<void> {
+  const formulario = new FormData();
+
+  formulario.append('tipoPermiso', datos.tipoPermiso);
+  formulario.append('direccionPredio', datos.direccionPredio);
+  formulario.append('matriculaInmobiliaria', datos.matriculaInmobiliaria);
+  formulario.append('descripcion', datos.descripcion);
+
+  datos.documentos.forEach((documento) => {
+    formulario.append('archivos', documento.archivo);
+    formulario.append('tiposDocumentos', documento.tipo);
+  });
+
+  const res = await fetch('/api/solicitudes', {
+    method: 'POST',
+    headers: { Authorization: auth },
+    body: formulario,
+  });
+
+  if (!res.ok) {
+    let mensaje = 'No se pudo registrar la solicitud.';
+
+    try {
+      const respuesta = await res.json();
+      mensaje = respuesta.message || respuesta.error || mensaje;
+    } catch {}
+
+    throw new Error(mensaje);
+  }
+}
+
+export async function obtenerMisSolicitudes(
+  auth: string
+): Promise<SolicitudResumen[]> {
+  const res = await fetch('/api/solicitudes/mis-solicitudes', {
+    method: 'GET',
+    headers: {
+      Authorization: auth,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error('No fue posible cargar tus trámites.');
+  }
+
+  return await res.json();
 }

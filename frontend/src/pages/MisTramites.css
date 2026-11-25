@@ -1,0 +1,362 @@
+.tramites-page {
+  min-height: 100vh;
+  background: #f7f8fa;
+  color: #172b4d;
+}
+
+.tramites-header {
+  min-height: 82px;
+  padding: 0 7%;
+  background: #ffffff;
+  border-bottom: 1px solid #e8ebf0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tramites-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #172b4d;
+  text-decoration: none;
+}
+
+.tramites-brand-symbol {
+  width: 43px;
+  height: 43px;
+  border-radius: 11px;
+  background: #173b67;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.tramites-brand strong,
+.tramites-brand span {
+  display: block;
+  letter-spacing: 1.2px;
+}
+
+.tramites-brand strong {
+  font-size: 14px;
+}
+
+.tramites-brand span {
+  margin-top: 3px;
+  font-size: 10px;
+  color: #718096;
+}
+
+.tramites-back {
+  color: #244d78;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tramites-back:hover {
+  color: #102e50;
+}
+
+.tramites-main {
+  width: min(1100px, 86%);
+  margin: 0 auto;
+  padding: 65px 0 90px;
+}
+
+.tramites-intro {
+  margin-bottom: 42px;
+}
+
+.tramites-eyebrow {
+  color: #3974a8;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.tramites-intro h1 {
+  margin: 12px 0;
+  color: #173b67;
+  font-size: clamp(32px, 5vw, 43px);
+  letter-spacing: -1.5px;
+}
+
+.tramites-intro p {
+  max-width: 650px;
+  margin: 0;
+  color: #697789;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.tramites-content {
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid #e8ebf0;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(26, 48, 75, 0.04);
+}
+
+.tramites-content-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.tramites-content-heading h2 {
+  margin: 0 0 6px;
+  color: #173b67;
+  font-size: 21px;
+}
+
+.tramites-content-heading p {
+  margin: 0;
+  color: #8994a3;
+  font-size: 13px;
+}
+
+.tramites-new-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #173b67;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.tramites-new-button:hover {
+  background: #245783;
+  transform: translateY(-1px);
+}
+
+.tramites-list {
+  display: grid;
+  gap: 17px;
+}
+
+.tramite-card {
+  padding: 23px;
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.tramite-card:hover {
+  border-color: #b7c9dc;
+  box-shadow: 0 5px 18px rgba(26, 48, 75, 0.05);
+}
+
+.tramite-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.tramite-radicado-label,
+.tramite-card-info span {
+  color: #8994a3;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.tramite-card-top h3 {
+  margin: 7px 0 0;
+  color: #173b67;
+  font-size: 22px;
+}
+
+.tramite-estado {
+  padding: 7px 12px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.estado-pendiente {
+  background: #fff4d9;
+  color: #936400;
+}
+
+.estado-revision {
+  background: #e5f1ff;
+  color: #2364a0;
+}
+
+.estado-aprobada {
+  background: #e0f5e9;
+  color: #207344;
+}
+
+.estado-rechazada {
+  background: #ffe6e6;
+  color: #ad3535;
+}
+
+.estado-correccion {
+  background: #f1eaff;
+  color: #7046a5;
+}
+
+.tramite-card-info {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 23px;
+  padding: 22px 0;
+}
+
+.tramite-card-info p {
+  margin: 7px 0 0;
+  color: #34445a;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.tramite-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #edf0f4;
+  color: #8994a3;
+  font-size: 12px;
+}
+
+.tramite-detail-label {
+  color: #3974a8;
+  font-weight: 700;
+}
+
+.tramites-message,
+.tramites-empty {
+  padding: 55px 20px;
+  text-align: center;
+  color: #697789;
+}
+
+.tramites-message h3,
+.tramites-empty h3 {
+  margin: 14px 0 8px;
+  color: #173b67;
+  font-size: 20px;
+}
+
+.tramites-message p,
+.tramites-empty p {
+  max-width: 470px;
+  margin: 0 auto 20px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.tramites-error button {
+  padding: 11px 17px;
+  border: none;
+  border-radius: 7px;
+  background: #173b67;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.tramites-loader {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  border: 3px solid #e2eaf2;
+  border-top-color: #245783;
+  border-radius: 50%;
+  animation: tramites-girar 0.8s linear infinite;
+}
+
+@keyframes tramites-girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tramites-empty-icon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #edf3f8;
+  color: #3974a8;
+  font-size: 32px;
+}
+
+.tramites-footer {
+  min-height: 75px;
+  padding: 20px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  background: #ffffff;
+  border-top: 1px solid #e8ebf0;
+  color: #8994a3;
+  font-size: 12px;
+}
+
+.tramites-footer strong {
+  color: #173b67;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 650px) {
+  .tramites-header {
+    padding: 0 5%;
+  }
+
+  .tramites-main {
+    width: 90%;
+    padding: 42px 0 60px;
+  }
+
+  .tramites-content {
+    padding: 20px 15px;
+  }
+
+  .tramites-content-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .tramite-card {
+    padding: 17px;
+  }
+
+  .tramite-card-info {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .tramite-card-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .tramites-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

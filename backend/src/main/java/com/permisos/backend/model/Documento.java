@@ -1,3 +1,4 @@
+
 package com.permisos.backend.model;
 
 import jakarta.persistence.*;
@@ -11,10 +12,17 @@ public class Documento {
     private Long id;
 
     @Column(nullable = false)
+    private String tipoDocumento;
+
+    @Column(nullable = false)
     private String nombreArchivo;
 
     @Column(nullable = false)
     private String formato;
+
+    private String tipoContenido;
+
+    private Long tamanioBytes;
 
     @Column(nullable = false)
     private String rutaArchivo;
@@ -23,7 +31,14 @@ public class Documento {
     private Solicitud solicitud;
 
     public boolean validarFormato() {
-        return "pdf".equalsIgnoreCase(formato);
+        return formato != null &&
+            (
+                formato.equalsIgnoreCase("pdf") ||
+                formato.equalsIgnoreCase("jpg") ||
+                formato.equalsIgnoreCase("jpeg") ||
+                formato.equalsIgnoreCase("png") ||
+                formato.equalsIgnoreCase("webp")
+            );
     }
 
     public Long getId() {
@@ -32,6 +47,14 @@ public class Documento {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
     public String getNombreArchivo() {
@@ -48,6 +71,22 @@ public class Documento {
 
     public void setFormato(String formato) {
         this.formato = formato;
+    }
+
+    public String getTipoContenido() {
+        return tipoContenido;
+    }
+
+    public void setTipoContenido(String tipoContenido) {
+        this.tipoContenido = tipoContenido;
+    }
+
+    public Long getTamanioBytes() {
+        return tamanioBytes;
+    }
+
+    public void setTamanioBytes(Long tamanioBytes) {
+        this.tamanioBytes = tamanioBytes;
     }
 
     public String getRutaArchivo() {

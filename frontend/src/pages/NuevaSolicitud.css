@@ -1,0 +1,200 @@
+
+.nueva-solicitud {
+  min-height: 100vh;
+  padding: 45px 7%;
+  background: #f5f6fa;
+  color: #252b3b;
+}
+
+.solicitud-header {
+  max-width: 1000px;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.solicitud-etiqueta {
+  color: #5968b5;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.solicitud-header h1 {
+  margin: 8px 0;
+  font-size: 32px;
+}
+
+.solicitud-header p,
+.seccion-descripcion {
+  color: #747b8b;
+  line-height: 1.6;
+}
+
+.volver-panel,
+.boton-cancelar {
+  color: #5968b5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.solicitud-formulario {
+  max-width: 1000px;
+  margin: auto;
+  padding: 30px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 5px 25px rgba(30, 40, 70, 0.06);
+}
+
+.form-seccion {
+  padding: 10px 0 28px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #e9ebf1;
+}
+
+.form-seccion h2 {
+  font-size: 19px;
+  margin-bottom: 5px;
+}
+
+.seccion-descripcion {
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+.form-seccion label {
+  display: block;
+  margin: 17px 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-seccion input:not([type="file"]),
+.form-seccion select,
+.form-seccion textarea {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dfe2ea;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  color: #252b3b;
+  box-sizing: border-box;
+}
+
+.form-seccion input:focus,
+.form-seccion select:focus,
+.form-seccion textarea:focus {
+  outline: none;
+  border-color: #6878c7;
+}
+
+.form-seccion textarea {
+  resize: vertical;
+}
+
+.documentos-lista {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.documento-campo {
+  padding: 14px;
+  background: #f8f9fc;
+  border: 1px solid #e9ebf1;
+  border-radius: 9px;
+  min-width: 0;
+}
+
+.documento-campo label {
+  margin-top: 0;
+  line-height: 1.5;
+}
+
+.documento-campo input,
+.form-seccion input[type="file"] {
+  max-width: 100%;
+  font-size: 13px;
+}
+
+.archivo-seleccionado {
+  display: block;
+  margin: 8px 0;
+  color: #36805d;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.contador-fotos {
+  color: #747b8b;
+  font-size: 13px;
+}
+
+.mensaje-error {
+  padding: 13px;
+  margin-bottom: 20px;
+  color: #a52e37;
+  background: #fff0f0;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.solicitud-acciones {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.solicitud-acciones button {
+  padding: 13px 24px;
+  border: none;
+  border-radius: 8px;
+  background: #5968b5;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.solicitud-acciones button:hover {
+  background: #46549c;
+}
+
+.solicitud-acciones button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .nueva-solicitud {
+    padding: 25px 15px;
+  }
+
+  .solicitud-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .solicitud-formulario {
+    padding: 20px 15px;
+  }
+
+  .documentos-lista {
+    grid-template-columns: 1fr;
+  }
+
+  .solicitud-acciones {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .solicitud-acciones button {
+    width: 100%;
+  }
+}

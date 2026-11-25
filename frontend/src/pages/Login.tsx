@@ -1,16 +1,36 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './Login.css';
 
 function Login() {
   const [correo, setCorreo] = useState('');
   const [clave, setClave] = useState('');
   const [mensaje, setMensaje] = useState('');
+  const [cargando, setCargando] = useState(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setMensaje('El formulario está listo. Próximamente conectaremos el inicio de sesión con el servidor.');
+    setMensaje('');
+    setCargando(true);
+
+    try {
+      await login(correo, clave);
+      setMensaje('¡Inicio de sesión exitoso!');
+      navigate('/panel');
+    } catch (error) {
+      setMensaje(
+        error instanceof Error
+          ? error.message
+          : 'No fue posible iniciar sesión.'
+      );
+    } finally {
+      setCargando(false);
+    }
   }
 
   return (
@@ -26,14 +46,18 @@ function Login() {
         </Link>
 
         <Link to="/" className="back-home">
-  ← Volver al inicio
-</Link>
+          ← Volver al inicio
+        </Link>
       </header>
 
       <main className="login-main">
         <section className="login-info">
-          <span className="login-eyebrow">PORTAL DE SERVICIOS CIUDADANOS</span>
+          <span className="login-eyebrow">
+            PORTAL DE SERVICIOS CIUDADANOS
+          </span>
+
           <h1>Gestiona tus trámites desde un solo lugar.</h1>
+
           <p>
             Accede a la plataforma para solicitar permisos,
             consultar el estado de tus solicitudes y hacer
@@ -84,8 +108,13 @@ function Login() {
               </p>
             )}
 
-            <button type="submit" className="login-submit">
-              Iniciar sesión <span>→</span>
+            <button
+              type="submit"
+              className="login-submit"
+              disabled={cargando}
+            >
+              {cargando ? 'Ingresando...' : 'Iniciar sesión'}
+              {!cargando && <span>→</span>}
             </button>
           </form>
 
